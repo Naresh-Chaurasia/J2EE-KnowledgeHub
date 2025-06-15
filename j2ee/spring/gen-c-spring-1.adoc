@@ -19,12 +19,43 @@
 
 === Terminologies
 
-* [ ] Beans
-* [ ] Autowiring
-* [ ] Dependency Injection
-* [ ] Inversion of Control
-* [ ] IOC Container
-* [ ] Application Context
+Here are simple definitions for each of the listed Spring Framework concepts:
+
+---
+
+*Beans*
+
+A *Bean* is an object that is managed by the Spring IoC container. It is created, configured, and assembled by Spring.
+
+---
+
+*Autowiring*
+
+*Autowiring* is a feature in Spring that automatically injects the required dependencies into a bean by matching types or names, without needing explicit configuration.
+
+---
+
+*Dependency Injection*
+
+*Dependency Injection* is a design pattern where one object supplies the dependencies (other objects it needs) to another object. In Spring, this means the container provides the required objects to your classes.
+
+---
+
+*Inversion of Control*
+
+*Inversion of Control (IoC)* is a principle where the control of object creation and management is given to the framework (Spring), instead of being handled in user code.
+
+---
+
+*IOC Container*
+
+The *IoC Container* is a part of the Spring Framework that implements IoC. It manages the lifecycle, configuration, and dependencies of beans.
+
+---
+
+*Application Context*
+
+The *ApplicationContext* is a Spring interface that represents the IoC container. It provides methods to get beans, load configuration files, and manage the application lifecycle.
 
 ---
 
