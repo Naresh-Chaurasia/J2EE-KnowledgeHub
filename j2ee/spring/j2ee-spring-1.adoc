@@ -61,6 +61,22 @@ The *ApplicationContext* is a Spring interface that represents the IoC container
 
 ---
 
+*@Repository*
+
+*@Repository* is a specialization of the @Component annotation used to indicate that the class provides CRUD operations and interacts with the database. Spring automatically translates database-related exceptions in classes marked with this annotation.
+
+---
+
+*@Configuration*
+
+*@Configuration* marks a class as a source of bean definitions. It is used to define beans using @Bean methods
+
+---
+
+*@ComponentScan*
+
+*@ComponentScan* tells Spring where to look for components (@Component, @Service, @Repository, etc.) to register as beans automatically.
+
 ##############################################
 
 === Inversion of Control (IoC)?
