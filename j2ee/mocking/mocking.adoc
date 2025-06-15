@@ -1,0 +1,217 @@
+= Mockito Tutorial with JUnit 5
+:toc: right
+:toclevels:5
+:sectnums:
+
+Mockito is a Java framework that allows the creation of mock objects for unit testing. It works especially well with JUnit 5.
+
+== Prerequisites
+
+Add the following Maven dependencies in your `pom.xml`:
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>5.0.0</version>
+    <scope>test</scope>
+</dependency>
+
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-engine</artifactId>
+    <version>5.9.1</version>
+    <scope>test</scope>
+</dependency>
+----
+
+== Basic Mock Example
+
+[source,java]
+----
+import org.junit.jupiter.api.Test;
+import java.util.List;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class BasicMockTest {
+
+    @Test
+    void testMockList() {
+        List<String> mockedList = mock(List.class);
+        when(mockedList.get(0)).thenReturn("Hello Mockito");
+
+        assertEquals("Hello Mockito", mockedList.get(0));
+        assertNull(mockedList.get(1)); // Unstubbed call returns null
+    }
+}
+----
+
+== Verify Method Calls
+
+[source,java]
+----
+public class VerifyMethodCallTest {
+
+    @Test
+    void testVerifyCalls() {
+        List<String> mockedList = mock(List.class);
+
+        mockedList.add("Apple");
+        mockedList.add("Banana");
+
+        verify(mockedList).add("Apple");
+        verify(mockedList).add("Banana");
+    }
+}
+----
+
+== Mocking Service Layer Dependency
+
+[source,java]
+----
+class UserService {
+    public String getUserName(int userId) {
+        return "Real User";
+    }
+}
+
+class UserController {
+    private final UserService service;
+
+    public UserController(UserService service) {
+        this.service = service;
+    }
+
+    public String fetchUserName(int id) {
+        return service.getUserName(id);
+    }
+}
+
+public class MockServiceTest {
+
+    @Test
+    void testServiceMock() {
+        UserService mockService = mock(UserService.class);
+        when(mockService.getUserName(1)).thenReturn("Mocked User");
+
+        UserController controller = new UserController(mockService);
+        assertEquals("Mocked User", controller.fetchUserName(1));
+    }
+}
+----
+
+== Mocking Exceptions
+
+[source,java]
+----
+import org.junit.jupiter.api.Test;
+import java.util.List;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ExceptionMockTest {
+
+    @Test
+    void testThrowingException() {
+        List<String> mockedList = mock(List.class);
+
+        // Configure the mock to throw an exception when get(1) is called
+        when(mockedList.get(1)).thenThrow(new RuntimeException("Item not found"));
+
+        try {
+            mockedList.get(1); // Call the method that should throw the exception
+            fail("Expected RuntimeException was not thrown"); // Fail the test if no exception is thrown
+        } catch (RuntimeException ex) {
+            assertEquals("Item not found", ex.getMessage()); // Verify the exception message
+        }
+    }
+}
+----
+
+== Verifying Number of Invocations
+
+[source,java]
+----
+public class VerifyTimesTest {
+
+    @Test
+    void testMultipleCalls() {
+        List<String> mockedList = mock(List.class);
+
+        mockedList.add("One");
+        mockedList.add("Two");
+        mockedList.add("Two");
+
+        verify(mockedList, times(1)).add("One");
+        verify(mockedList, times(2)).add("Two");
+    }
+}
+----
+
+== Resetting a Mock
+
+[source,java]
+----
+public class ResetMockTest {
+
+    @Test
+    void testReset() {
+        List<String> mockedList = mock(List.class);
+
+        when(mockedList.size()).thenReturn(5);
+        assertEquals(5, mockedList.size());
+
+        reset(mockedList);
+        assertEquals(0, mockedList.size()); // Unstubbed after reset
+    }
+}
+----
+
+
+
+##############################################
+
+---
+
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
+
+##############################################
+
