@@ -6,8 +6,8 @@
 
 ==  Code
 
-* GenC-SpringFramework-1
-** IoC
+* Java-J2EE-SpringFramework-1
+** package `com.sorting`
 
 == Spring Framework Core Concepts
 
@@ -17,7 +17,7 @@
 
 ##############################################
 
-=== Terminologies
+=== Basic Terminologies
 
 Here are simple definitions for each of the listed Spring Framework concepts:
 
@@ -27,7 +27,9 @@ Here are simple definitions for each of the listed Spring Framework concepts:
 
 A *Bean* is an object that is managed by the Spring IoC container. It is created, configured, and assembled by Spring.
 
----
+*@Configuration*
+
+*@Configuration* is an annotation in Spring used to mark a class as a source of bean definitions. It tells Spring that the class contains one or more @Bean methods and should be processed by the Spring container to generate and manage Spring Beans.
 
 *Autowiring*
 
@@ -71,37 +73,6 @@ The *ApplicationContext* is a Spring interface that represents the IoC container
 
 ##############################################
 
-==== Demo
-
-* example/demo
-
-
-```java
-@Configuration
-public class AppConfig {
-    @Bean
-    public MessageService messageService() {
-        return new MessageServiceImpl();
-    }
-}
-```
-
-##############################################
-
-==== Autowiring
-
-* autowiring
-
-```java
-@Configuration
-@ComponentScan(basePackages = "com.autowiring")
-public class AppConfig {
-}
-```
-
-##############################################
-
-==== AutowiringXML
 
 ##############################################
 
