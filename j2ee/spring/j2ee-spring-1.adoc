@@ -8,8 +8,11 @@
 
 * Java-J2EE-SpringFramework-1
 ** package `com.sorting`
+** package `com.springdi.sorting`
+** package `com.dp.dao`
+** package `com.springdi.dao`
 
-== Spring Framework Core Concepts
+== Spring Core
 
 * *Introduction to Spring Framework*
 
@@ -27,9 +30,13 @@ Here are simple definitions for each of the listed Spring Framework concepts:
 
 A *Bean* is an object that is managed by the Spring IoC container. It is created, configured, and assembled by Spring.
 
+---
+
 *@Configuration*
 
 *@Configuration* is an annotation in Spring used to mark a class as a source of bean definitions. It tells Spring that the class contains one or more @Bean methods and should be processed by the Spring container to generate and manage Spring Beans.
+
+---
 
 *Autowiring*
 
@@ -89,12 +96,7 @@ The *ApplicationContext* is a Spring interface that represents the IoC container
 
 ##############################################
 
-
-##############################################
-
 ==== Loose Coupling: Sorting
-
-* RECAP: GenC-SpringCore1/sorting
 
 ---
 
@@ -336,24 +338,6 @@ public class Car {
 
 ##############################################
 
-*Lazy Initialization Overview*
-
-* *Definition:*
-* By default, Spring initializes beans eagerly.
-* `@Lazy` delays bean creation until the first request.
-
-* *Example:*
-```java
-@Component
-@Lazy
-public class HeavyComponent {
-    public HeavyComponent() {
-        System.out.println("HeavyComponent initialized");
-    }
-}
-```
-
----
 
 === Bean Scopes
 
