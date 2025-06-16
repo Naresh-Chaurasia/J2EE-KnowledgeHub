@@ -26,9 +26,9 @@ Here are simple definitions for each of the listed Spring Framework concepts:
 
 ---
 
-*Beans*
+*@Beans*
 
-A *Bean* is an object that is managed by the Spring IoC container. It is created, configured, and assembled by Spring.
+A *@Bean* is an object that is managed by the Spring IoC container. It is created, configured, and assembled by Spring.
 
 ---
 
