@@ -377,17 +377,17 @@ Here's a brief comparison between `@PreDestroy` and `destroyMethod = "customDest
 
 * `@PreDestroy`
 
-* Called *before* the bean is destroyed.
-* Annotates a no-arg method for cleanup.
-* Requires the class to be managed by Spring and use JSR-250 annotations.
-* Only one method per bean can be annotated with `@PreDestroy`.
+** Called *before* the bean is destroyed.
+** Annotates a no-arg method for cleanup.
+** Requires the class to be managed by Spring and use JSR-250 annotations.
+** Only one method per bean can be annotated with `@PreDestroy`.
 
 * `destroyMethod = "customDestroy"`
 
-* Also called *before* destruction.
-* You specify the name of the cleanup method in the `@Bean` definition.
-* Offers more flexibility in method naming and doesn't require annotations.
-* Useful when working with legacy code or external libraries.
+** Also called *before* destruction.
+** You specify the name of the cleanup method in the `@Bean` definition.
+** Offers more flexibility in method naming and doesn't require annotations.
+** Useful when working with legacy code or external libraries.
 
 *In short*:
 
