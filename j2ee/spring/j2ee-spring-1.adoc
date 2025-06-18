@@ -7,10 +7,10 @@
 ==  Code
 
 * Java-J2EE-SpringFramework-1
-** package `com.sorting`
-** package `com.springdi.sorting`
-** package `com.dp.dao`
-** package `com.springdi.dao`
+* package `com.sorting`
+* package `com.springdi.sorting`
+* package `com.dp.dao`
+* package `com.springdi.dao`
 
 == Spring Core
 
@@ -238,9 +238,9 @@ Imagine you love eating delicious home-cooked food but don't have time to cook. 
 * Dependency Injection (DI) is a technique where one object supplies dependencies of another object.
 
 * Types of DI:
-** Constructor Injection
-** Setter Injection
-** Field Injection
+* Constructor Injection
+* Setter Injection
+* Field Injection
 
 ##############################################
 
@@ -347,14 +347,16 @@ public class Car {
 * `prototype`
 * `request`, `session`, `application` (Web only)
 
-* *Example:*
+Here’s a short explanation:
 
-```java
-@Component
-@Scope("prototype")
-public class PrototypeBean {
-}
-```
+* *Singleton*: Spring creates *one single instance* of the bean per Spring container. This instance is reused every time the bean is requested. It’s the default scope.
+
+* *Prototype*: Spring creates *a new instance* of the bean every time it is requested. Each use gets a fresh object.
+
+*In short*:
+*Singleton = one shared bean instance*
+*Prototype = new bean instance every time*
+
 
 ---
 
@@ -377,17 +379,17 @@ Here's a brief comparison between `@PreDestroy` and `destroyMethod = "customDest
 
 * `@PreDestroy`
 
-** Called *before* the bean is destroyed.
-** Annotates a no-arg method for cleanup.
-** Requires the class to be managed by Spring and use JSR-250 annotations.
-** Only one method per bean can be annotated with `@PreDestroy`.
+* Called *before* the bean is destroyed.
+* Annotates a no-arg method for cleanup.
+* Requires the class to be managed by Spring and use JSR-250 annotations.
+* Only one method per bean can be annotated with `@PreDestroy`.
 
 * `destroyMethod = "customDestroy"`
 
-** Also called *before* destruction.
-** You specify the name of the cleanup method in the `@Bean` definition.
-** Offers more flexibility in method naming and doesn't require annotations.
-** Useful when working with legacy code or external libraries.
+* Also called *before* destruction.
+* You specify the name of the cleanup method in the `@Bean` definition.
+* Offers more flexibility in method naming and doesn't require annotations.
+* Useful when working with legacy code or external libraries.
 
 *In short*:
 
@@ -419,7 +421,7 @@ return new Engine();
 
 *Aspect-Oriented Programming (AOP)* helps you separate cross-cutting concerns (like logging, security, transactions) from your main business logic.
 
-For example, instead of writing logging code in every method, you write it **once** in an "Aspect" and apply it **where needed**.
+For example, instead of writing logging code in every method, you write it *once* in an "Aspect" and apply it *where needed*.
 
 ---
 
