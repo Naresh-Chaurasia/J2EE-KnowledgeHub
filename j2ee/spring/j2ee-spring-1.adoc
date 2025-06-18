@@ -360,24 +360,16 @@ public class PrototypeBean {
 
 === Bean Lifecycle
 
-* *Definition:*
-* Spring provides lifecycle callbacks using `@PostConstruct` and `@PreDestroy`.
+The *Spring Bean Lifecycle* is the process a bean follows within the Spring container:
 
-* *Example:*
-```java
-@Component
-public class LifecycleBean {
-@PostConstruct
-public void init() {
-System.out.println("Bean initialized");
-}
+* Spring creates the bean instance.
+* It injects dependencies (sets properties).
+* It applies any lifecycle callbacks like `@PostConstruct`, `afterPropertiesSet()`, or custom init methods.
+* The bean is ready for use.
+* When the application shuts down, Spring calls destroy methods like `@PreDestroy`, `destroy()`, or custom destroy methods.
 
-      @PreDestroy
-      public void destroy() {
-          System.out.println("Bean destroyed");
-      }
-  }
-```
+This lifecycle ensures proper initialization and cleanup of resources.
+
 
 ---
 
