@@ -358,7 +358,7 @@ public class PrototypeBean {
 
 ---
 
-=== Bean Lifecycle Methods
+=== Bean Lifecycle
 
 * *Definition:*
 * Spring provides lifecycle callbacks using `@PostConstruct` and `@PreDestroy`.
@@ -381,7 +381,7 @@ System.out.println("Bean initialized");
 
 ---
 
-=== Java Config Bean Overview
+=== Java Config Bean
 
 * *Definition:*
 * Instead of XML, Java-based configuration defines beans using `@Configuration` and `@Bean`.
@@ -435,90 +435,14 @@ To use AOP in Spring, add this to your `pom.xml`:
 
 ```xml
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-aop</artifactId>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-aop</artifactId>
+    <version>6.1.4</version>
+</dependency>
+
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.9.21.1</version>
 </dependency>
 ```
-
----
-
-*Example Code*
-
-*1. Business Logic – `MyService.java`*
-
-```java
-package com.example.demo.service;
-
-import org.springframework.stereotype.Service;
-
-@Service
-public class MyService {
-    public void doWork() {
-        System.out.println("Doing actual work...");
-    }
-}
-```
-
-*2. Logging Aspect – `LoggingAspect.java`*
-
-```java
-package com.example.demo.aspect;
-
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.springframework.stereotype.Component;
-
-@Aspect
-@Component
-public class LoggingAspect {
-
-    @Before("execution(* com.example.demo.service.*.*(..))")
-    public void logBeforeMethod() {
-        System.out.println("Logging before method execution...");
-    }
-}
-```
-
-*3. Spring Boot Application – `DemoApplication.java`*
-
-```java
-package com.example.demo;
-
-import com.example.demo.service.MyService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class DemoApplication implements CommandLineRunner {
-
-    @Autowired
-    private MyService myService;
-
-    public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
-    }
-
-    @Override
-    public void run(String... args) {
-        myService.doWork();
-    }
-}
-```
-
----
-
-*Output*
-
-```
-Logging before method execution...
-Doing actual work...
-```
-
-
-
-
-
-
-
