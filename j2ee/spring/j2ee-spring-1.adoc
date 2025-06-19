@@ -467,7 +467,7 @@ To use AOP in Spring, add this to your `pom.xml`:
 
 ##############################################
 
-== 🎯 Assignment: Coffee Machine Simulation
+== Assignment: Coffee Machine Simulation
 
 === 📘 Objective
 
