@@ -464,3 +464,61 @@ To use AOP in Spring, add this to your `pom.xml`:
     <version>1.9.21.1</version>
 </dependency>
 ```
+
+##############################################
+
+== 🎯 Assignment: Coffee Machine Simulation
+
+=== 📘 Objective
+
+Simulate a simple coffee machine system using Spring Core. Students will apply IoC, DI, Bean Scopes, Lifecycle methods, and AOP to build this application.
+
+---
+
+=== 🧩 Requirements:
+
+*Create Interfaces and Implementations*
+
+* `CoffeeMachine` (Interface)
+* Implementations:
+
+* `EspressoMachine`
+* `LatteMachine`
+
+Use `@Component` and `@Qualifier` annotations to distinguish between these implementations.
+
+*Dependency Injection*
+
+Create a `CafeService` class that depends on the `CoffeeMachine`. Inject the dependency using:
+
+* Constructor Injection
+* Use `@Autowired` and `@Qualifier` where applicable.
+
+*Bean Scopes*
+
+* Make `EspressoMachine` a `singleton` bean.
+* Make `LatteMachine` a `prototype` bean.
+
+Print a statement inside constructors to show the difference in bean instantiation.
+
+*Bean Lifecycle*
+
+* Use `@PostConstruct` and `@PreDestroy` in `CafeService` or `EspressoMachine`.
+* Add print statements to observe lifecycle callbacks.
+
+*Aspect-Oriented Programming*
+
+* Create an aspect called `LoggerAspect`.
+* Use AOP to log method execution for `CafeService.makeCoffee()` using `@Before` and `@After` advice.
+
+---
+
+=== ✅ Success Criteria
+
+* Proper use of annotations: `@Component`, `@Autowired`, `@Scope`, `@Qualifier`, `@PostConstruct`, `@PreDestroy`, and AOP annotations.
+* Console output shows bean creation, method logs, and lifecycle events.
+* Different behavior for singleton and prototype beans is observable.
+* Aspect methods log the method calls for coffee making.
+
+---
+
